@@ -1,0 +1,12 @@
+import Logout from "../../../components/Logout";
+
+export default function AdminDashboard() {
+  return (
+    <div>
+      <h1>Admin Dashboard</h1>
+      <p>Sirf admin role wale user is page ko dekh sakte hain.</p>
+      <Logout />
+    </div>
+  );
+}
+
