@@ -1,26 +1,27 @@
 import axios from "axios";
 
-const API = axios.create({
-  baseURL: "http://localhost:5000/api", // backend ka port
-});
+const API_BASE = "http://localhost:5000/api"; // apne backend ka port
 
-// Existing
+// ✅ Users ke liye already hoga
 export const fetchUsers = async () => {
-  const res = await API.get("/admin/users");
+  const res = await axios.get(`${API_BASE}/users`);
   return res.data;
 };
 
-// New: fetch ads
-export const fetchAds = async (page = 1) => {
-  const res = await API.get(`/ads?page=${page}`);
+// ✅ Ads ke liye
+export const fetchAds = async () => {
+  const res = await axios.get(`${API_BASE}/ads`);
   return res.data;
 };
 
-// New: create ad (admin panel se)
-export const createAd = async (adData) => {
-  const res = await API.post("/ads", adData);
+// ✅ Tasks ke liye
+export const fetchTasks = async () => {
+  const res = await axios.get(`${API_BASE}/tasks`);
   return res.data;
 };
 
-export default API;
+export const updateTask = async (taskId, updatedData) => {
+  const res = await axios.put(`${API_BASE}/tasks/${taskId}`, updatedData);
+  return res.data;
+};
 
